@@ -6,3 +6,4 @@ Every approval given for this project. The agent adds one line per approval.
 |---|---|---|---|---|
 | G1 | BRD | v1 | Mhmd H | 2026-10-01 |
 | G2 | PLAN | v1 | Mhmd H | 2026-10-01 |
+| G3 | PR #9 | feat: implement tip calculator | hermesagenttabbeqai | 2026-10-01 |
