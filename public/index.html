@@ -3,10 +3,105 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Coming soon</title>
+  <title>Tip Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Coming soon</h1>
-  <p>This project is being built by the Hermes Dev Assistant.</p>
+  <div class="app">
+    <header>
+      <h1>🍽️ Tip Calculator</h1>
+      <p>Split the bill, not the friendship</p>
+    </header>
+
+    <!-- Inputs card -->
+    <div class="card">
+
+      <!-- Bill amount (BR-01) -->
+      <div class="field">
+        <label for="bill">Bill Amount</label>
+        <div class="input-wrap">
+          <span class="input-prefix" id="bill-prefix">$</span>
+          <input type="number" id="bill" class="has-prefix"
+                 placeholder="0.00" min="0" step="0.01"
+                 inputmode="decimal" autocomplete="off">
+        </div>
+        <div class="error-msg" id="bill-error" role="alert"></div>
+      </div>
+
+      <!-- Tip % presets + custom (BR-02, BR-03) -->
+      <div class="field">
+        <label>Tip Percentage</label>
+        <div class="preset-row">
+          <button class="preset-btn" data-pct="10" type="button">10%</button>
+          <button class="preset-btn active" data-pct="15" type="button">15%</button>
+          <button class="preset-btn" data-pct="20" type="button">20%</button>
+        </div>
+        <div class="input-wrap">
+          <input type="number" id="custom-tip"
+                 placeholder="Custom %" min="0" max="100" step="0.1"
+                 inputmode="decimal" autocomplete="off">
+        </div>
+      </div>
+
+      <!-- People (BR-06) -->
+      <div class="field">
+        <label for="people">Number of People</label>
+        <div class="stepper">
+          <button class="step-btn" id="dec-people" type="button" disabled
+                  aria-label="Decrease people">−</button>
+          <input type="number" id="people" value="1" min="1" step="1"
+                 inputmode="numeric" autocomplete="off">
+          <button class="step-btn" id="inc-people" type="button"
+                  aria-label="Increase people">+</button>
+        </div>
+        <div class="error-msg" id="people-error" role="alert"></div>
+      </div>
+
+      <!-- Rounding toggle (R-01) -->
+      <div class="field">
+        <div class="toggle-row">
+          <label class="toggle" for="round-toggle" aria-label="Round up per-person amount">
+            <input type="checkbox" id="round-toggle">
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label">Round up per person to nearest $1</span>
+        </div>
+      </div>
+
+      <!-- Currency (R-02) -->
+      <div class="field">
+        <label for="currency">Currency</label>
+        <select id="currency">
+          <option value="USD">$ USD</option>
+          <option value="EUR">€ EUR</option>
+          <option value="GBP">£ GBP</option>
+          <option value="SAR">SAR</option>
+        </select>
+      </div>
+
+    </div><!-- /.card -->
+
+    <!-- Results (BR-04, BR-05, BR-07) -->
+    <div class="results-card" aria-live="polite" aria-label="Calculation results">
+      <div class="result-row">
+        <span class="result-label">Tip Amount</span>
+        <span class="result-value" id="result-tip">$0.00</span>
+      </div>
+      <div class="result-row highlight">
+        <span class="result-label">Total Bill</span>
+        <span class="result-value" id="result-total">$0.00</span>
+      </div>
+      <div class="result-row" id="per-person-row" style="display:none">
+        <span class="result-label">Per Person</span>
+        <span class="result-value" id="result-per">$0.00</span>
+      </div>
+    </div>
+
+    <!-- Reset (BR-08) -->
+    <button class="reset-btn" id="reset-btn" type="button">Reset</button>
+
+  </div><!-- /.app -->
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
